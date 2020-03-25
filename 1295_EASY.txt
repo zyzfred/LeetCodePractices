@@ -1,0 +1,21 @@
+# 1295. Find Numbers with Even Number of Digits
+# Given an array nums of integers, return how many of them contain an even number of digits.
+
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        def countdigits(n, count):
+            if n < 10:
+                return count + 1
+            else:
+                return countdigits(n // 10, count + 1)
+        result = 0
+        for num in nums:
+            digits = countdigits(num, 0)
+            if digits % 2 == 0:
+                result = result + 1
+        return result
+
+# better one line solution
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        return len([x for x in nums if len(str(x)) % 2 == 0])

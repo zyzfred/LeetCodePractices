@@ -1,0 +1,13 @@
+# 1281. Subtract the Product and Sum of Digits of an Integer
+# Given an integer number n, return the difference between the product of 
+# its digits and the sum of its digits.
+
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        def subtractProductAndSum(self, n, pod, sod):
+            if n < 10:
+                return pod * n - (sod + n)
+            else:
+                return subtractProductAndSum(self, n // 10, pod * (n % 10), sod + (n % 10))
+        return subtractProductAndSum(self, n, 1, 0)
+
