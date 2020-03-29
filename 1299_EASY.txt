@@ -1,0 +1,40 @@
+# 1299. Replace Elements with Greatest Element on Right Side
+# Given an array arr, replace every element 
+# in that array with the greatest element among the 
+# elements to its right, and replace the last element with -1.
+# After doing so, return the array.
+
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        # solution 1, time O(n^3) sapce O(1)
+        # for i in range(len(arr)):
+        #    if i < len(arr) - 1:
+        #        arr[i] = max(arr[i+1:])
+        #    else:
+        #        arr[i] = -1
+        #  return arr
+        
+        # another solution time O(n) space O(1), faster than 94.22
+        n = len(arr)
+
+        maxIndex = 0
+        currentMax = arr[-1]
+        arr[-1] = -1
+
+        for i in range(n - 1):
+            currentIndex = n - 2 - i
+            currentVal = arr[currentIndex]
+            arr[currentIndex] = currentMax
+            if currentVal > currentMax:
+                currentMax = currentVal
+    
+        return arr      
+    
+        # another solution time O(n) space O(1)
+        # def replaceElements(self, arr: List[int]) -> List[int]:
+        #     mx = -1
+        #     for i in range(len(arr) - 1, -1, -1):
+        #         arr[i], mx = mx, max(arr[i], mx)
+        #     return arr
+        
+            

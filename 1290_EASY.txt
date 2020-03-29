@@ -1,0 +1,56 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# solution 1: calculate the len, and then sum every val up
+# class Solution:
+#     def getDecimalValue(self, head: ListNode) -> int:
+#         head.len = 1
+#         currentNode = head
+#         while currentNode.next != None:
+#             head.len = head.len + 1
+#            currentNode = currentNode.next
+#        
+#         currentNode = head
+#         decimal_sum = 0
+#         while currentNode != None:
+#             if currentNode.val == 1:
+#                 decimal_sum = decimal_sum + pow(2, head.len - 1)
+#            head.len = head.len - 1
+#            currentNode = currentNode.next
+#       
+#        return decimal_sum
+#
+#   TIME O(n) SPACE O(1)
+
+# solution2: use stack
+# class Solution:
+#    def getDecimalValue(self, head: ListNode) -> int:
+#        
+#        stack = list()
+#        currentNode = head
+#        num = 0
+#        
+#        while currentNode != None:
+#            stack.insert(0, currentNode.val)
+#            currentNode = currentNode.next
+#
+#        for i in range(len(stack)):
+#            if stack[i] != 0:
+#                num = num + pow(2, i)
+#        
+#        return num
+#
+#   TIME O(n) SPACE O(n)   
+
+# solution3: bitwise operations
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        ans = 0
+        while head != None:
+            ans = 2 * ans + head.val
+            head = head.next
+        return ans
+#   TIME O(n) SPACE O(1)
